@@ -100,7 +100,7 @@ export function ThankYouScreen({ batch, onSubmitAnother }: ThankYouScreenProps) 
                   className="mt-0.5 size-4.5 shrink-0 rounded-[5px] border-border accent-primary"
                 />
                 <span>
-                  Send me Helbi Bites updates, new flavors &amp; occasional promos.
+                  Send me lil&apos; bites updates, new flavors &amp; occasional promos.
                 </span>
               </label>
 
@@ -142,7 +142,7 @@ export function ThankYouScreen({ batch, onSubmitAnother }: ThankYouScreenProps) 
 
       <p className="flex items-start gap-2 px-1 text-[13px] leading-relaxed text-muted-foreground">
         <HeartStraight weight="fill" className="mt-0.5 size-4 shrink-0 text-primary" />
-        Thank you for supporting Helbi Bites and a small business like ours. Every order,
+        Thank you for supporting lil&apos; bites and a small business like ours. Every order,
         review, and bit of feedback means a lot to us. 🤎
       </p>
 

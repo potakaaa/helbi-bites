@@ -7,8 +7,8 @@ import { cn } from "@workspace/ui/lib/utils";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
-  title: "Helbi Bites — Feedback",
-  description: "Tell us how your Helbi Bites brownie was. Takes less than 20 seconds.",
+  title: "lil' bites — Feedback",
+  description: "Tell us how your lil' bites brownie was. Bite more, worry less.",
 }
 
 export const viewport: Viewport = {

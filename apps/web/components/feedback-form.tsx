@@ -39,7 +39,7 @@ export function FeedbackForm({
     <div className="flex flex-col gap-9 animate-in fade-in slide-in-from-bottom-2 duration-500">
       <div className="flex flex-col items-center gap-2 pt-1 text-center">
         <h1 className="text-2xl font-semibold tracking-tight text-balance text-foreground">
-          How was your Helbi Bites brownie? 🍫
+          How was your lil&apos; bites brownie? 🍫
         </h1>
         <p className="text-[15px] text-muted-foreground">Takes less than 20 seconds.</p>
       </div>
