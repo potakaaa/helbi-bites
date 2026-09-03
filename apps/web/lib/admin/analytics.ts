@@ -100,11 +100,16 @@ function responseRate(
   return share(answered.filter(predicate).length, answered.length)
 }
 
+/**
+ * `previous` is null for the all-time range, where no preceding window exists.
+ * That is not the same as an empty window: comparing against zero would report
+ * every all-time figure as pure growth.
+ */
 export function summarize(
   current: FeedbackRow[],
-  previous: FeedbackRow[],
+  previous: FeedbackRow[] | null,
   currentSubscribers: SubscriberRow[],
-  previousSubscribers: SubscriberRow[]
+  previousSubscribers: SubscriberRow[] | null
 ) {
   const optIn = (subscribers: SubscriberRow[], feedback: FeedbackRow[]) =>
     share(
@@ -113,19 +118,20 @@ export function summarize(
     )
 
   return {
-    responses: kpi(current.length, previous.length),
+    responses: kpi(current.length, previous && previous.length),
     avgRating: kpi(
       mean(current.map((row) => row.rating)),
-      mean(previous.map((row) => row.rating))
+      previous && mean(previous.map((row) => row.rating))
     ),
     // "Definitely" only — a stricter and more honest signal than folding in "maybe".
     rebuy: kpi(
       responseRate(current, (row) => row.buy_again === "definitely"),
-      responseRate(previous, (row) => row.buy_again === "definitely")
+      previous &&
+        responseRate(previous, (row) => row.buy_again === "definitely")
     ),
     optIn: kpi(
       optIn(currentSubscribers, current),
-      optIn(previousSubscribers, previous)
+      previousSubscribers && previous && optIn(previousSubscribers, previous)
     ),
   }
 }

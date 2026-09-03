@@ -93,19 +93,26 @@ export async function getDashboardData({ range, batch }: DashboardFilters) {
   const current = allFeedback.filter((row) =>
     inWindow(row.created_at, currentStart)
   )
-  const previous = allFeedback.filter(
-    (row) =>
-      !inWindow(row.created_at, currentStart) &&
-      inWindow(row.created_at, previousStart)
-  )
   const currentSubscribers = allSubscribers.filter((row) =>
     inWindow(row.consented_at, currentStart)
   )
-  const previousSubscribers = allSubscribers.filter(
-    (row) =>
-      !inWindow(row.consented_at, currentStart) &&
-      inWindow(row.consented_at, previousStart)
-  )
+
+  // All time has no preceding window, so there is nothing to compare against
+  // and the KPI cards drop their deltas rather than measuring against zero.
+  const previous = currentStart
+    ? allFeedback.filter(
+        (row) =>
+          !inWindow(row.created_at, currentStart) &&
+          inWindow(row.created_at, previousStart)
+      )
+    : null
+  const previousSubscribers = currentStart
+    ? allSubscribers.filter(
+        (row) =>
+          !inWindow(row.consented_at, currentStart) &&
+          inWindow(row.consented_at, previousStart)
+      )
+    : null
 
   const commented = current.filter(
     (row) => row.comment !== null && row.comment.trim().length > 0
