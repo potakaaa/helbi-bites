@@ -1,6 +1,13 @@
 {
   "extends": "@workspace/typescript-config/react-library.json",
   "compilerOptions": {
+    // This package ships source, not build output: apps/web lists it in
+    // `transpilePackages`, so Next/Turbopack resolves it with bundler
+    // semantics. Matching that here is what lets extensionless re-exports in
+    // dependency type definitions (e.g. @phosphor-icons/react) resolve the
+    // same way they do at build time.
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "paths": {
       "@workspace/ui/*": ["./src/*"]
     }

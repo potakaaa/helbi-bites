@@ -7,7 +7,11 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "turbo format",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:status": "supabase status"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",

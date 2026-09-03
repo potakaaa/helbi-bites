@@ -5,6 +5,12 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": [
+        "ADMIN_PASSWORD",
+        "ADMIN_SESSION_SECRET",
+        "NODE_ENV",
+        "SUPABASE_SECRET_KEY"
+      ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "lint": {
